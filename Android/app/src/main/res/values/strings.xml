@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Malika</string>
+    <string name="title_home">Home</string>
+    <string name="title_news">News</string>
+    <string name="title_camera">Camera</string>
+    <string name="title_faq">FAQ</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_categories">Categories</string>
+    <string name="picture">picture</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="camera_id">1221</string>
+    <string name = "permission"> Permissions not granted by the user.</string>
+    <string name="detail">Detail</string>
+    <string name="lapor_btn">Lapor</string>
+
+
+</resources>
