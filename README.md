@@ -63,6 +63,7 @@ Select the default Firebase project.
 ### Featured Technologies
 * [Node js](https://nodejs.org/en/) It is suitable for those who need real time communication between client and server and The single-threaded event system is very fast when handling many requests at once from clients
 * [Framework Express Js](https://expressjs.com/)  there is no need to use the default http module from NodeJS. This framework offers several features such as routing, view rendering, and supports middleware in other words it will save a lot of time in Node.js application development.
+* [Google Cloud Platform (GCP)](https://cloud.google.com/gcp/)  Grow from prototype to production without having to think about capacity, reliability, or performance, Easily capture, manage, process, and visualize data with Google Cloud data analytics products.
 
 ## Using the Image recognition feature
 The app allows you to use your device's camera to snap an image. Select an image of an object or put the object in frame using your camera. Local inference will then be performed, and the result will be shown whether it is violence or non-violence.
