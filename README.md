@@ -2,6 +2,16 @@
 Domestic violence reporting mobile app based on android featured by offline image recognition 
 
 ### Team ID : B21-CAP0459
+### Team Members
+Ilyasa Ridho Tadzaka 			(A2912648)
+Reyhan Rasyid Ziddan 			(A2912650)
+Bayu Setyadji 				(C0070663)
+Hilman 					(C2912653)
+Daffa Fauzan Azhari 			(M3022734)
+Johansyah Rafdinal Ikhsan 		(M0070665)
+
+ 
+
 Theme : Women Empowerment and Child Protection
 
 Malika is our initiative to help solve one problem about domestic violence reporting whether it is bruised-face (violence) or non-bruised-face (non-violence) using Deep Learning. We add Transfer Learning with MobileNetV2 as the base model and apply CNN in the last layer in our custom image dataset. In the end, we will have an android mobile app application where users can classify images taken with their device's camera. The app uses a converted ML model called TensorFlow Lite (.tflite) format.
