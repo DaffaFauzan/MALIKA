@@ -3,13 +3,7 @@ Domestic violence reporting mobile app based on android featured by offline imag
 
 ### Team ID : B21-CAP0459
 ### Team Members
-Ilyasa Ridho Tadzaka 			(A2912648)
-Reyhan Rasyid Ziddan 			(A2912650)
-Bayu Setyadji 				(C0070663)
-Hilman 					(C2912653)
-Daffa Fauzan Azhari 			(M3022734)
-Johansyah Rafdinal Ikhsan 		(M0070665)
-
+Ilyasa Ridho Tadzaka (A2912648), Reyhan Rasyid Ziddan (A2912650), Bayu Setyadji (C0070663), Hilman (C2912653), Daffa Fauzan Azhari (M3022734), Johansyah Rafdinal Ikhsan (M0070665)
 
 Theme : Women Empowerment and Child Protection
 
@@ -34,7 +28,7 @@ After training, you can save the model into Keras hdf5 file and convert it into 
 ## Android
 ### Steps To Clone Project
 1. Pull the project from android  or download from this link https://github.com/DaffaFauzan/MALIKA.git
-2. Open In Androd studio
+2. Open In Android studio
 
 ### Featured Technologies
 
@@ -47,15 +41,25 @@ After training, you can save the model into Keras hdf5 file and convert it into 
 ![ss](https://user-images.githubusercontent.com/17398200/121333082-aa78cc80-c942-11eb-8a33-358359f9b45c.PNG)
 
 
-
-
-
-## Cloud Computing
-### Steps To...
+## Cloud Computing Learning Path
+### Steps To deploy firebase functions
+1. Make sure you have created a project in firebase or in GCP
+2. Open the project directory on the local machine
+3. Install the firebase CLI using npm. Note that you will need to install Node.js and npm.
+to download and install the firebase CLI run the following command:
+“npm install -g firebase-tools”
+4. Login to Firebase using a Google Account by running the following command:
+“ firebase login “
+This command connects a local computer to Firebase and grants access to your Firebase project .
+5. To initialize a new Firebase project, run the following command from within your app directory:
+“ firebase init “
+The firebase init command will guide you through setting up your project directory and some Firebase products. During project initialization, the Firebase CLI prompts to complete the following tasks: 
+Select Firebase product :
+ functions : Configure and deploy cloud functions
+Select the default Firebase project.
+6. To deploy to a Firebase project, run the following command from your project directory:
+ “firebase deploy --only functions”
 
 ### Featured Technologies
-
-
-
-## Using the App
-The app allows you to either use your device's camera to snap an image. Select an image of an object or put the object in frame using your camera, then click classify. Local inference will then be performed, and the top 3 results will be given with several comments.
+* [Node js](https://nodejs.org/en/) It is suitable for those who need real time communication between client and server and The single-threaded event system is very fast when handling many requests at once from clients
+* [Framework Express Js](https://expressjs.com/)  there is no need to use the default http module from NodeJS. This framework offers several features such as routing, view rendering, and supports middleware in other words it will save a lot of time in Node.js application development.
