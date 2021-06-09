@@ -4,9 +4,9 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -20,13 +20,12 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.studio.malika.R
 import com.studio.malika.databinding.ActivityCameraBinding
-import com.studio.malika.ml.Malika
+import com.studio.malika.ml.FinalCapstone
 import kotlinx.android.synthetic.main.activity_camera.*
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.File
-import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
@@ -37,7 +36,7 @@ class CameraActivity : AppCompatActivity() {
 
     companion object{
         private  var TAG = CameraActivity::class.java.simpleName
-        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
+        private const val FILENAME_FORMAT = "EEEE, dd MMMM yyyy HH:mm:ss"
         private const val REQUEST_CODE_PERMISSIONS = 20
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
 
@@ -73,18 +72,13 @@ class CameraActivity : AppCompatActivity() {
     private fun takePhoto() {
         val imageCapture = imageCapture ?: return
 
-        // Create time-stamped output file to hold the image
         val photoFile = File(
             outputDirectory,
             SimpleDateFormat(FILENAME_FORMAT, Locale.getDefault()).format(System.currentTimeMillis()) + ".jpg"
         )
 
-        // Create output options object which contains file + metadata
         val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
 
-        // Set up image capture listener,
-        // which is triggered after photo has
-        // been taken
         imageCapture.takePicture(
             outputOptions,
             ContextCompat.getMainExecutor(this),
@@ -96,65 +90,27 @@ class CameraActivity : AppCompatActivity() {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
 
-                    // set the saved uri to the image view
                     binding.ivCapture.visibility = View.VISIBLE
                     binding.ivCapture.setImageURI(savedUri)
-//                    val msg = "Photo capture succeeded: $savedUri"
-//                    Toast.makeText(baseContext, msg, Toast.LENGTH_LONG).show()
-//                    Log.d(TAG, msg)
-
-
-                    bitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(savedUri))
-                    val resized = resizeImage(bitmap, 125, 150, true)
-
-//                    bitmap = savedUri.
+                    bitmap =  MediaStore.Images.Media.getBitmap(this@CameraActivity.contentResolver, savedUri)
+                    val resized = Bitmap.createScaledBitmap(bitmap, 224, 224, true)
 
                     val labels = application.assets.open("labels.txt").bufferedReader().use { it.readText() }.split("\n")
-
-
-
-                    val model = Malika.newInstance(applicationContext)
-
-
-                    Log.d("ini bitmap ini ", bitmap.toString())
-                    Log.d("ini apa rowbyte", bitmap.rowBytes.toString())
-                    Log.d("ini apa lagi", bitmap.byteCount.toString())
-                    Log.d("ini resized image", resized?.byteCount.toString())
-
-
-
-                    val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 150, 150, 3), DataType.FLOAT32)
-
+                    val model = FinalCapstone.newInstance(applicationContext)
+                    val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.UINT8)
                     val buffer = TensorImage.fromBitmap(resized)
-
-                    Log.d("ini buffer", buffer.toString())
-
                     val byteBuffer = buffer.buffer
-
-                    Log.d("ini bitbuffer",byteBuffer.toString())
-
-// Creates inputs for reference.
-                    inputFeature0.loadBuffer(buffer.buffer)
-
-                    Log.d("ini hasilnya",        inputFeature0.loadBuffer(byteBuffer).toString())
-
-// Runs model inference and gets result.
+                    inputFeature0.loadBuffer(byteBuffer)
                     val outputs = model.process(inputFeature0)
                     val outputFeature0 = outputs.outputFeature0AsTensorBuffer
-                    Log.d("ini input",outputs.toString())
-
-
-                    val max = getMax(outputFeature0.floatArray)
-                    val label =    labels[1]
-                    Log.d("label",label)
+                    val max = getViolance(outputFeature0.floatArray)
 
 
 
                     val intent = Intent(this@CameraActivity,DetailCameraActivity::class.java)
                     intent.putExtra(DetailCameraActivity.EXTRA_IMAGE, savedUri.toString())
-                                        intent.putExtra(DetailCameraActivity.EXTRA_PREDICTION, label)
+                    intent.putExtra(DetailCameraActivity.EXTRA_PREDICTION, labels[max])
 
-                    Log.e(TAG,labels[0])
 
                     startActivity(intent)
 
@@ -166,32 +122,34 @@ class CameraActivity : AppCompatActivity() {
     }
 
 
-      private  fun getMax(arr:FloatArray) : Int {
-            var ind = 0;
-            var min = 0.0f;
+      private  fun getViolance(arr:FloatArray) : Int {
 
-            for (i in 0..1) {
+
+          var index = 0;
+            var min = 0.0f;
+          val range = 0..0
+
+
+
+            for (i in  range) {
+
                 if (arr[i] > min) {
                     min = arr[i]
-                    ind = i;
+                    index = i;
                 }
             }
-            return ind
+            return index
 
         }
 
-    private fun resizeImage(bitmap: Bitmap, width: Int, height: Int, filter: Boolean): Bitmap? =
-        Bitmap.createScaledBitmap(bitmap, width, height, filter)
 
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
-        cameraProviderFuture.addListener(Runnable {
+        cameraProviderFuture.addListener({
 
-            // Used to bind the lifecycle of cameras to the lifecycle owner
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 
-            // Preview
             val preview = Preview.Builder()
                 .build()
                 .also {
@@ -202,14 +160,11 @@ class CameraActivity : AppCompatActivity() {
 
             imageCapture = ImageCapture.Builder().build()
 
-            // Select back camera as a default
             val cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
 
             try {
-                // Unbind use cases before rebinding
                 cameraProvider.unbindAll()
 
-                // Bind use cases to camera
                 cameraProvider.bindToLifecycle(
                     this, cameraSelector, preview, imageCapture
                 )
@@ -225,7 +180,6 @@ class CameraActivity : AppCompatActivity() {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
-    // creates a folder inside internal storage
     private fun getOutputDirectory(): File {
         val mediaDir = externalMediaDirs.firstOrNull()?.let {
             File(it, resources.getString(R.string.app_name)).apply { mkdirs() }
@@ -234,7 +188,6 @@ class CameraActivity : AppCompatActivity() {
             mediaDir else filesDir
     }
 
-    // checks the camera permission
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
         IntArray

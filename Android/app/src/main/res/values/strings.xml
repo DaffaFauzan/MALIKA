@@ -10,9 +10,18 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="camera_id">1221</string>
-    <string name = "permission"> Permissions not granted by the user.</string>
+    <string name="permission"> Permissions not granted by the user.</string>
     <string name="detail">Detail</string>
     <string name="lapor_btn">Lapor</string>
+    <string name="nama">Nama : </string>
+    <string name="kekerasan">Kekerasan : </string>
+    <string name="tanggal">"Tanggal : </string>
+    <string name="alamat">"Alamat : "</string>
+    <string name="dummy_name">Riska </string>
+    <string name="dummy_address">Komp Cibogo Indah Bandung,Jawa barat</string>
+    <string name="no_darurat">No Darurat</string>
+    <string name="upload_sukses">Berhasil Diupload</string>
+    <string name="not_available">Not Available</string>
 
 
 </resources>

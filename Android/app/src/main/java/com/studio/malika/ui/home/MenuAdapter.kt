@@ -48,7 +48,7 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
             with(binding) {
                 tvItemName.text = menu.name
                 itemView.setOnClickListener {
-                    onItemClickCallback.onItemClicked(menu)
+                    onItemClickCallback.onItemClicked(menu,adapterPosition)
 
                 }
                 Glide.with(itemView.context)
@@ -63,6 +63,6 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
 
     interface OnItemClickCallback {
 
-        fun onItemClicked(menu: Menu)
+        fun onItemClicked(menu: Menu,int: Int)
     }
 }

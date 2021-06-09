@@ -4,17 +4,18 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature android:name="android.hardware.camera.any" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Malika">
-        <activity android:name=".ui.camera.DetailCameraActivity"></activity>
+        <activity android:name=".ui.telephone.TelephoneActivity" />
+        <activity android:name=".ui.camera.DetailCameraActivity" />
         <activity android:name=".ui.camera.CameraActivity" />
         <activity
             android:name=".MainActivity"

@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_news"
-        android:name="com.studio.malika.ui.dashboard.DashboardFragment"
+        android:name="com.studio.malika.ui.fragment.DashboardFragment"
         android:label="@string/title_news"
         tools:layout="@layout/fragment_dashboard" />
     <activity
@@ -23,12 +23,12 @@
 
     <fragment
         android:id="@+id/navigation_faq"
-        android:name="com.studio.malika.ui.notifications.NotificationsFragment"
+        android:name="com.studio.malika.ui.fragment.DashboardFragment"
         android:label="@string/title_faq"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_dashboard" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.studio.malika.ui.notifications.NotificationsFragment"
+        android:name="com.studio.malika.ui.fragment.DashboardFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_dashboard" />
 </navigation>
