@@ -23,9 +23,22 @@ After training, you can save the model into Keras hdf5 file and convert it into 
 
 
 ## Android
-### Steps To...
+### Steps To Clone Project
+1. Pull the project from android  or download from this link https://github.com/DaffaFauzan/MALIKA.git
+2. Open In Androd studio
 
 ### Featured Technologies
+
+* [Kotlin](kotlinlang.org): Why Kotlin. Modern, concise and safe programming language. Concise; Safe; Interoperable.
+* [Retrofit](square.github.io): Retrofit is the class through which your API interfaces are turned into callable objects
+* [Camera 2](https://developer.android.com/training/camera2): Camera2 is the latest Android camera framework API that replaces the deprecated camera framework libraries.
+* [TensorFlow Lite](https://www.tensorflow.org/lite): TensorFlow Lite is an open source deep learning framework for on-device inference.
+### Screen Shoot
+
+![ss](https://user-images.githubusercontent.com/17398200/121333082-aa78cc80-c942-11eb-8a33-358359f9b45c.PNG)
+
+
+
 
 
 ## Cloud Computing
@@ -36,4 +49,4 @@ After training, you can save the model into Keras hdf5 file and convert it into 
 
 
 ## Using the App
-The app allows you to either use your device's camera to snap an image or select a local image from the device's file system. Select an image of an object or put the object in frame using your camera, then click classify. Local inference will then be performed, and the top 3 results will be given with several comments.
+The app allows you to either use your device's camera to snap an image. Select an image of an object or put the object in frame using your camera, then click classify. Local inference will then be performed, and the top 3 results will be given with several comments.
