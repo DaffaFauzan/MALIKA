@@ -10,7 +10,6 @@ Hilman 					(C2912653)
 Daffa Fauzan Azhari 			(M3022734)
 Johansyah Rafdinal Ikhsan 		(M0070665)
 
- 
 
 Theme : Women Empowerment and Child Protection
 
