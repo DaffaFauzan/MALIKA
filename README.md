@@ -11,8 +11,9 @@ Malika is our initiative to help solve one problem about domestic violence repor
 1. Download dataset from
 kaggle(https://www.kaggle.com/daffafauzanazhari/bruised-facememar). This dataset divided into 2 classes: violence and non-violence
 2. Open Google Colaboratory notebook
-You can refer to this [notebook](https://github.com/DaffaFauzan/MALIKA/blob/main/Machine-Learning/Final_Capstone_Model_MobileNetV2.ipynb) as baseline implementation with Convolutional Neural Network. 
-3. Save model
+You can refer to this [notebook](https://github.com/DaffaFauzan/MALIKA/blob/main/Machine-Learning/Final_Capstone_Model_MobileNetV2.ipynb) as baseline implementation with Convolutional Neural Network.
+3. Create kaggle account if you don't have any. Login to kaggle.com and go to account section. Search "Create new API token".  
+4. Save model
 After training, you can save the model into Keras hdf5 file and convert it into TensorFlow Lite format which has a .tflite file format extension through several optimization processes such as quantization.
 
 
