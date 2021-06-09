@@ -17,9 +17,9 @@ After training, you can save the model into Keras hdf5 file and convert it into 
 
 
 ### Featured Technologies
-* [TensorFlow] (https://www.tensorflow.org/) The core open source library to help you develop and train ML models. Get started quickly by running Colab notebooks directly in your browser.
-* [TensorFlow Lite] (https://www.tensorflow.org/lite) TensorFlow Lite is an open source deep learning framework for on-device inference.
-* [Keras] (https://keras.io/) Keras is a deep learning API written in Python, running on top of the machine learning platform TensorFlow.
+* [TensorFlow](https://www.tensorflow.org/): The core open source library to help you develop and train ML models. Get started quickly by running Colab notebooks directly in your browser.
+* [TensorFlow Lite](https://www.tensorflow.org/lite): TensorFlow Lite is an open source deep learning framework for on-device inference.
+* [Keras](https://keras.io/): Keras is a deep learning API written in Python, running on top of the machine learning platform TensorFlow.
 
 
 ## Android
