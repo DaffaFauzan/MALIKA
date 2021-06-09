@@ -43,7 +43,7 @@ After training, you can save the model into Keras hdf5 file and convert it into 
 
 ## Cloud Computing Learning Path
 ### Steps To deploy firestore to cloud functions
-1. Make sure you have created a project in firebase or in GCP
+1. Make sure you have created a project in firebase and connect with your project in GCP
 2. Open the project directory on the local machine
 3. Install the firebase CLI using npm. Note that you will need to install Node.js and npm.
 to download and install the firebase CLI run the following command:
